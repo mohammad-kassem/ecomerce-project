@@ -14,4 +14,13 @@ class Product extends Model{
         'category_id',
     ];
 
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
+    public function users(){
+        return $this->belongsToMany(User::class)
+        ->as('likes')
+        ->withTimestamps();
+    }
 }
