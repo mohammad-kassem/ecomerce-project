@@ -9,7 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject{
-    HasFactory, Notifiable;
+    use HasFactory, Notifiable;
+    public $timestamps = true;
 
     /**
      * The attributes that are mass assignable.
