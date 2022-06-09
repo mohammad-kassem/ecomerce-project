@@ -8,5 +8,10 @@ Route::group(['prefix' => 'v1'], function(){
     Route::group(['prefix' => 'user'], function(){
         Route::post('/register', [JWTController::class, 'register']);
         Route::post('/login', [JWTController::class, 'login']);
+        Route::group(['middleware' => 'api'], function($router) {
+            Route::post('/refresh', [JWTController::class, 'refresh']);
+            Route::post('/logout', [JWTController::class, 'logout']);
+        });
+
     });
 });

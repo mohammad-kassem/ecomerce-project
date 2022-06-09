@@ -60,6 +60,17 @@ class JWTController extends Controller
         return $this->respondWithToken($token);
     }
 
+    //refresh token
+    public function refresh(){
+        return $this->respondWithToken(auth()->refresh());
+    }
+
+    //logout user
+    public function logout(){
+        auth()->logout();
+        return response()->json(['message' => 'User successfully logged out.']);
+    }
+
     //Get the token array structure.
     protected function respondWithToken($token)
     {
