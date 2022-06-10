@@ -58,7 +58,7 @@ class JWTController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        $user = Auth::user();
+        $user = auth()->user();
         echo $user;
         return $this->respondWithToken($token);
     }

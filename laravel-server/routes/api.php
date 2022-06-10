@@ -17,7 +17,7 @@ Route::group(['prefix' => 'v1'], function(){
     });
 
     Route::group(['prefix' => 'product'], function(){
-        Route::get('/products/{id}', [ProductController::class, 'getALLproducts']);
+        Route::get('/products', [ProductController::class, 'getALLproducts']);
         Route::group(['middleware' => 'api'], function($router) {
             Route::post('/like_product', [JWTController::class, 'likeProduct']);
         });

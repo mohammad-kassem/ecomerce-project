@@ -10,14 +10,17 @@ use App\HTTP\Controllers\Controller;
 
 
 class ProductController extends Controller{
-    public function getAllProducts($user_id){
+    public function getAllProducts(){
         // $products = Product::get();
         // foreach ($products as $product) {
-        //     $product = $product->users->where("id", 2);
+        //     $product = $product->users->select("product_name", "user_id")->get();
+        //     echo($product);
         //     foreach($product as $x){
-        //     echo $x->pivot->user_id->with('Products');
+        //         echo $x->likes->select('user_id')->get();
         //     }
         // }
+        $user = (auth()->user());
+        $user_id= $user->id;
         $products = Product::with(['users'=>function($querry) use ($user_id){
             $querry->where('user_id',$user_id);
         }])->get();
