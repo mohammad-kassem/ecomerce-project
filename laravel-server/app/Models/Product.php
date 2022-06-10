@@ -12,6 +12,7 @@ class Product extends Model{
         'product_name',
         'price',
         'category_id',
+        'image',
     ];
 
     public function category(){
