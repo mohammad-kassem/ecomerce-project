@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JWT\JWTController;
+use App\Http\Controllers\User\ProductController;
+
 
 Route::group(['prefix' => 'v1'], function(){
     Route::group(['prefix' => 'user'], function(){
@@ -12,6 +14,8 @@ Route::group(['prefix' => 'v1'], function(){
             Route::post('/refresh', [JWTController::class, 'refresh']);
             Route::post('/logout', [JWTController::class, 'logout']);
         });
-
+    });
+    Route::group(['prefix' => 'product'], function(){
+        Route::get('/products/{id}', [ProductController::class, 'getALLproducts']);
     });
 });
