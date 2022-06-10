@@ -57,6 +57,9 @@ class JWTController extends Controller
         if (!$token = auth()->attempt($validator->validated())) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
+
+        $user = Auth::user();
+        echo $user;
         return $this->respondWithToken($token);
     }
 
@@ -69,6 +72,15 @@ class JWTController extends Controller
     public function logout(){
         auth()->logout();
         return response()->json(['message' => 'User successfully logged out.']);
+    }
+
+    //like product
+    public function likeProduct(Request $request){
+        $user = auth()->user();
+        $Json = (json_decode(json_encode($user->products), true));
+        if(empty($Json)) $user->products()->attach($request->id);
+        else $user->products()->detach($request->id);
+        
     }
 
     //Get the token array structure.

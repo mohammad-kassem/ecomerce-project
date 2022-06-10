@@ -19,10 +19,12 @@ class ProductController extends Controller{
         //     }
         // }
         $products = Product::with(['users'=>function($querry) use ($user_id){
-            $querry->where('user_id',$user_id);}])->get();
+            $querry->where('user_id',$user_id);
+        }])->get();
         return response()->json([
             "status" => "Success",
             "products" => $products
         ], 200);
     }
+
 }
