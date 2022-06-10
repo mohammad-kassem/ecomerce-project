@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JWT\JWTController;
 use App\Http\Controllers\User\ProductController;
+use App\Http\Controllers\Admin\AdminController;
 
 
 Route::group(['prefix' => 'v1'], function(){
@@ -25,7 +26,7 @@ Route::group(['prefix' => 'v1'], function(){
 
     Route::group(['prefix' => 'admin'], function(){
         Route::group(['middleware' => 'admin'], function($router) {
-
+            Route::post('/upload_product', [AdminController::class, 'uploadProduct']);
         });
     });
 });
