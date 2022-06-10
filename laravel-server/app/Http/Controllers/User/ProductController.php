@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Product;
@@ -10,7 +11,12 @@ use App\HTTP\Controllers\Controller;
 
 
 class ProductController extends Controller{
-    public function getAllProducts(){
+    // public function __construct(){
+    //     $this->middleware('auth:api');
+    // }
+    
+    public function getAllProducts(Request $request){
+        
         // $products = Product::get();
         // foreach ($products as $product) {
         //     $product = $product->users->select("product_name", "user_id")->get();
@@ -19,8 +25,13 @@ class ProductController extends Controller{
         //         echo $x->likes->select('user_id')->get();
         //     }
         // }
-        $user = (auth()->user());
-        $user_id= $user->id;
+        $token = auth()->check();
+        echo($token);
+        if ($token){
+            $user = (auth()->user());
+            $user_id= $user->id;
+        }
+        else $user_id = 0;
         $products = Product::with(['users'=>function($querry) use ($user_id){
             $querry->where('user_id',$user_id);
         }])->get();
@@ -29,5 +40,4 @@ class ProductController extends Controller{
             "products" => $products
         ], 200);
     }
-
 }
