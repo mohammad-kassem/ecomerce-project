@@ -22,4 +22,9 @@ Route::group(['prefix' => 'v1'], function(){
             Route::post('/like_product', [JWTController::class, 'likeProduct']);
         });
     });
+
+    Route::group(['prefix' => 'admin'], function(){
+        Route::group(['middleware' => 'admin'], function($router) {
+        };
+    });
 });
