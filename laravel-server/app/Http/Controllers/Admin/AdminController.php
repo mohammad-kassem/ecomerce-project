@@ -7,14 +7,12 @@ use Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Category;
 
 use App\HTTP\Controllers\Controller;
 
 
 class AdminController extends Controller{
-    // public function __construct(){
-    //     $this->middleware('auth:api');
-    // }
 
     public function uploadProduct(Request $request){
 
@@ -45,6 +43,27 @@ class AdminController extends Controller{
             'status' => 'success',
             'message' => 'Product added successfully',
             'product' => $product,
+        ]);
+    }
+
+    public function addCategory(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|min:2|max:255',
+        ]);
+
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+        
+        $category = Category::create([
+            'category_name' => $request->name,
+        ]);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Category added successfully',
+            'category' => $category,
         ]);
     }
 }
