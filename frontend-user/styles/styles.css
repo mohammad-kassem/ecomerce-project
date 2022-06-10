@@ -19,8 +19,8 @@ a {
     text-decoration: none;
 }
 
-/* login page */
-.login{
+/* login page and register*/
+.login, .register{
     width: 400px;
     margin: 25vh auto;
     background-color: #fff;
@@ -28,14 +28,14 @@ a {
     border-radius: 10px;
 }
 
-.login>h1{
+.login>h1, .register>h1{
     margin: 5%;
     text-align: center;
     font-size: 22px;
     color: #1877f2;
 }
 
-.login-form{
+.login-form, .register-form{
     margin: 5%;
 }
 
@@ -69,24 +69,24 @@ input {
 .btn-large {
     font-size: 18px;
     width: 100%;
-    margin-top: 1vh;
+    margin: 10px 0;
 }
 
-.signup-text{
+.login-text-div, .register-text-div{
     text-align: center;
-    margin: 3vh;
+    margin: 10px;
 }
 
-.new-account {
-    font-size: 17px;
+.login-text, .register-text {
+    font-size: 16px;
     color: #1877f2;
     cursor: pointer;
 }
 
-.new-account:hover {
+.login-text:hover, .register-text:hover {
     color: #0855ba;
 }
 
-.signup-btn:hover {
+.login-btn:hover, .register-btn:hover {
     background-color: #0855ba;
 }
