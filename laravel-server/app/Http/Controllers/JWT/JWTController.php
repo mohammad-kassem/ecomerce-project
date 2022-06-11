@@ -76,8 +76,9 @@ class JWTController extends Controller
     //like product
     public function likeProduct(Request $request){
         $user = auth()->user();
-        $Json = (json_decode(json_encode($user->products), true));
-        if(empty($Json)) $user->products()->attach($request->id);
+        // $Json = (json_decode(json_encode($user->products), true));
+        $json = json_decode(json_encode($user->products->where('id', $request->id), true));
+        if(empty($json)) $user->products()->attach($request->id);
         else $user->products()->detach($request->id);
         
     }
