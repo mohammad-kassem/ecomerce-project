@@ -4,6 +4,8 @@
 <head>
   <title> Register </title>
   <link rel="stylesheet" href="../styles/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../scripts/register.js" defer></script>
 </head>
 
 <body>
@@ -11,16 +13,16 @@
     <h1> Sign Up </h1>
     <form  id="register" class="register-form">
       <div class="cridentials-box">
-        <input type="text" id="first-name" placeholder="First name*" name="first-name" required>
+        <input type="text" id="fname" placeholder="First name*" name="fname" required>
       </div>
       <div class="cridentials-box">
-        <input type="text" id="last-name" placeholder="Last name*" name="last-name" required>
+        <input type="text" id="lname" placeholder="Last name*" name="lname" required>
       </div>
       <div class="cridentials-box">
-        <input type="email" id="user-email" placeholder="Email address*" name="user-email" required>
+        <input type="email" id="email" placeholder="Email address*" name="email" required>
       </div>
       <div class="cridentials-box">
-        <input type="password" id="user-password" placeholder="Password*" name="user-password" required>
+        <input type="password" id="password" placeholder="Password*" name="password" required>
       </div>
       <button id="register-button" class="btn btn-large register-btn" type="submit"> Get Started </button>
       <div class="login-text-div"><a class="login-text" href="./login.html"> Already Have An Account </a></div>
