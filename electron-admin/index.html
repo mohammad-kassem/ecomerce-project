@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="./styles/styles.css">
+  <title> Admin </title>
+</head>
+
+<body>
+    <div class="upload-product">
+        <nav>
+            <div></div>
+            <ul class="nav-items">
+                <li> Add Category</li>
+                <li> Add Product </li>
+            </ul>
+            <div class="profile-logo"><img src="./assets/user_pro.png"></div>
+        </nav>
+
+
+        <section class="page-content">
+            <div class="upload-product-header">
+                <h1> Upload Product </h1>
+            </div>
+            <form class="upload-product-form">
+                <label for="product-image">Product Image</label>
+                <input type="file" id="product-image" class="upload-btn" accept="image/*"><br>
+                <label for="product-name">Product Name</label>
+                <input type="text" id="product-name" name="product-name" placeholder="Enter Product Name"><br>
+                <label for="category">Category</label>
+                <select id="category" name="category" placeholder="Select Category">
+                <option value="1">Toys</option>
+                <option value="2">Electronics</option>
+                <option value="3">Clothing</option>
+                </select><br>
+                <label for="price">Price</label>
+                <input type="text" id="price" name="price" placeholder="Enter Price">
+                <div class="buttons-container">
+                <button type="reset" class="btn cancel">Cancel</button>
+                <button type="submit" class="btn">Submit</button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+
+</body>
+
+</html>
