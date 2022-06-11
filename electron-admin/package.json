@@ -1,0 +1,15 @@
+{
+  "name": "electron-admin",
+  "version": "1.0.0",
+  "description": "admin pages",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Mohammad Kassem",
+  "license": "MIT",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.63",
+    "electron": "^19.0.4"
+  }
+}
