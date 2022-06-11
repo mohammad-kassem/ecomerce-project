@@ -16,7 +16,7 @@ signup.addEventListener("submit", function (event) {
     data: data,
   }).then(function (response) {
     if (response.data.message == "User successfully registered") {
-    //   window.location.href = "./login.html";
+        window.location.href = "./login.html";
     //   alert(response.data.message);
     } 
     
