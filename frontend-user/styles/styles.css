@@ -88,11 +88,8 @@ input {
     cursor: pointer;
 }
 
-.login-text:hover, .register-text:hover {
-    color: #0855ba;
-}
 
-.login-btn:hover, .register-btn:hover {
+.btn:hover{
     background-color: #0855ba;
 }
 
@@ -124,6 +121,7 @@ nav {
 
 .products-header {
     margin: 10px auto;
+    padding: 10px 0;
     width: 100%;
     text-align: center;
     border-bottom: 2px solid black;
