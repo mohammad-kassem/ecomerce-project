@@ -25,10 +25,9 @@ class ProductController extends Controller{
         //         echo $x->likes->select('user_id')->get();
         //     }
         // }
-        $token = auth()->check();
-        echo($token);
+        $token = auth('api')->check();
         if ($token){
-            $user = (auth()->user());
+            $user = (auth('api')->user());
             $user_id= $user->id;
         }
         else $user_id = 0;

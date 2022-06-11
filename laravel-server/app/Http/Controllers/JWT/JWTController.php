@@ -59,8 +59,7 @@ class JWTController extends Controller
         }
 
         $user = auth()->user();
-        echo $user;
-        return $this->respondWithToken($token);
+        return $this->respondWithToken($token, $user);
     }
 
     //refresh token
@@ -84,12 +83,13 @@ class JWTController extends Controller
     }
 
     //Get the token array structure.
-    protected function respondWithToken($token)
+    protected function respondWithToken($token, $user)
     {
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => auth()->factory()->getTTL() * 60,
+            'user' => $user
         ]);
     }
 
