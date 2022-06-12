@@ -62,16 +62,20 @@ li{
 
 
 /* upload products and upload categories styling */
+
 .hide{
   display: none;
 }
 
+.show{
+  display: block;
+}
 
 label {
   width: 35%;
 }
 
-input, select {
+#upload-product input, #upload-category input, select {
   width: 64%;
   height: 50px;
   padding: 12px 1%;

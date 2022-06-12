@@ -4,6 +4,7 @@
 <head>
     <title> Admin </title>
     <link rel="stylesheet" href="./styles/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./scripts/upload.js" defer></script>
 </head>
 
@@ -20,19 +21,19 @@
             <div class="upload-product-header">
                 <h1> Upload Product </h1>
             </div>
-            <form id="upload-product-form">
+            <form>
                 <label for="product-image">Product Image</label>
-                <input type="file" id="product-image" class="upload-btn" accept="image/*" required><br>
+                <input type="file" id="product-image" accept="image/*" required>
                 <label for="product-name">Product Name</label>
-                <input type="text" id="product-name" name="product-name" placeholder="Enter Product Name" required><br>
-                <label for="category">Category</label>
-                <select id="category" name="category" placeholder="Select Category" required>
-                <option value="1">Toys</option>
-                <option value="2">Electronics</option>
-                <option value="3">Clothing</option>
-                </select><br>
-                <label for="price">Price</label>
-                <input type="text" id="price" name="price" placeholder="Enter Price" required>
+                <input type="text" id="product-name" name="product-name" placeholder="Enter Product Name" required>
+                <label for="product-category">Product Category</label>
+                <select id="product-category" name="product-category" placeholder="Select Category" required>
+                    <option value="1">Toys</option>
+                    <option value="2">Electronics</option>
+                    <option value="3">Clothing</option>
+                </select>
+                <label for="product-price">Product Price</label>
+                <input type="text" id="product-price" name="product-price" placeholder="Enter Price" required>
                 <div class="buttons-container">
                     <button type="reset" class="btn cancel">Cancel</button>
                     <button type="submit" class="btn">Submit</button>
@@ -43,7 +44,7 @@
             <div class="upload-category-header">
                 <h1> Upload Category </h1>
             </div>
-            <form id="upload-category-form">
+            <form>
                 <label for="category-name">Category Name</label>
                 <input type="text" id="category-name" name="category-name" placeholder="Enter Category Name" required><br>
                 <div class="buttons-container">

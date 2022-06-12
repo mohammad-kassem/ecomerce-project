@@ -19,7 +19,7 @@ class AdminController extends Controller{
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:2|max:255',
             'price' => 'required',
-            'category_id' => 'required|integer',
+            'category_id' => 'required',
             'image' => 'required',
         ]);
 
@@ -35,7 +35,7 @@ class AdminController extends Controller{
         $product = Product::create([
             'product_name' => $request->name,
             'price' =>  $request->price,
-            'category_id' =>  $request->price,
+            'category_id' =>  $request->category_id,
             'image' => $image_url,
         ]);
 

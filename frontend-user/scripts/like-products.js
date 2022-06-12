@@ -13,10 +13,10 @@ profile_logo.addEventListener("click", function(){
     headers: {"Authorization" : `Bearer ${token}`}
   }).then(function (response) {
     let products_directory = document.getElementById("products-directory");
-    // every row contains 3 products boxes so at i=0,3,6..... we create a new row
+    // every row contains 5 products boxes so at i=0,5,10..... we create a new row
     let products = response.data.products;
     for (let i = 0; i < products.length; i++) {
-      if (i % 3 === 0) {
+      if (i % 5 === 0) {
         row = document.createElement("div");
         row.classList.add("products-row");
         products_directory.appendChild(row);

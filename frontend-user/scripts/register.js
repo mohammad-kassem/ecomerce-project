@@ -1,10 +1,10 @@
 let signup = document.getElementById("register");
 signup.addEventListener("submit", function (event) {
   event.preventDefault();
-  let user_email = document.getElementById("email");
-  let user_password = document.getElementById("password");
-  let first_name = document.getElementById("fname");
-  let last_name = document.getElementById("lname");
+  let email = document.getElementById("email");
+  let password = document.getElementById("password");
+  let fname = document.getElementById("fname");
+  let lname = document.getElementById("lname");
   let data = new FormData();
   data.append("email", email.value);
   data.append("password", password.value);
