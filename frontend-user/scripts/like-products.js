@@ -1,5 +1,4 @@
 let token = localStorage.getItem("token");
-if (!token) window.location.href = "./pages/login.html";
 // display the products //
   axios({
     method: "get",
@@ -34,18 +33,39 @@ if (!token) window.location.href = "./pages/login.html";
 
       //and always append the product boxes to the most recent row
       row.appendChild(product_box);
-
-      // this takes you to the product you clicked on with the product id in the url
-      product_box.addEventListener("click", function () {
-        window.location.href =
-          "./pages/product-reviews.html?user_id=" + user_id + "&product_id=" + product_box.id;
-      });
     }
     for (let i = 0; i < products.length; i++) {
-        if (products[i].length){
+        if (products[i].users.length){
             let like_button = document.getElementById(`liked${products[i].id}`);
-            console.log(like_button.id);
             like_button.innerHTML = `<i class="fa-solid fa-heart"></i>`
         }
     }
+    
+      // like a product //
+      let like_buttons = document.getElementsByClassName(`like`);
+      let product_id = 0;
+      for (let i = 0; i< like_buttons.length; i++){
+        like_buttons[i].addEventListener('click', function(){
+          product_id = like_buttons[i].id;
+          product_id = product_id[product_id.length - 1];
+          console.log(product_id);
+          data = new FormData();
+          data.append('id', product_id);
+          axios({
+            method: "post",
+            url: "http://127.0.0.1:8000/api/v1/product/like_product",
+            headers: {"Authorization" : `Bearer ${token}`},
+            data: data,
+          }).then(function (response) {
+            if (like_buttons[i].innerHTML == `<i class="fa-solid fa-heart"></i>`) like_buttons[i].innerHTML = `<i class="fa-regular fa-heart"></i>`;
+            else  like_buttons[i].innerHTML = `<i class="fa-solid fa-heart"></i>`;
+        });
+
+      });
+      }
   });
+
+
+
+
+
