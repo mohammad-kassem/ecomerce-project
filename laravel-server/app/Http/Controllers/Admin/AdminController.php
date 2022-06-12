@@ -93,6 +93,14 @@ class AdminController extends Controller{
             'category' => $category,
         ]);
     }
+
+    public function getCategories(){
+        $categories = Category::get();
+        return response()->json([
+            'status' => 'Success',
+            'category' => $categories,
+        ]);
+    }
 }
 
 
