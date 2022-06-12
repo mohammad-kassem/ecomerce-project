@@ -62,14 +62,10 @@ li{
 
 
 /* upload products and upload categories styling */
-
-#upload-product{
-  display: block;
-}
-
-#upload-category{
+.hide{
   display: none;
 }
+
 
 label {
   width: 35%;
