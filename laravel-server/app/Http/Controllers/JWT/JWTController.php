@@ -5,6 +5,7 @@ namespace App\Http\Controllers\JWT;
 use Auth;
 use Validator;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\HTTP\Controllers\Controller;
@@ -26,7 +27,8 @@ class JWTController extends Controller
         ]);
 
         if($validator->fails()) {
-            return response()->json($validator->errors(), 400);
+            return response() -> json([
+                'message' => $validator->messages()->get('*')]);
         }
 
         $user = User::create([
@@ -59,6 +61,8 @@ class JWTController extends Controller
         }
 
         $user = auth()->user();
+        $role = $user->role;
+
         return $this->respondWithToken($token, $user);
     }
 
@@ -90,7 +94,8 @@ class JWTController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => $user
+            'user' => $user,
+            // 'role' => $role
         ]);
     }
 

@@ -55,10 +55,8 @@ upload_product.addEventListener("submit", function (event) {
     headers: {"Authorization" : `Bearer ${token}`},
     data: data
   }).then(function (response) {
-    if (response.data.message == "Product added successfully") {
-        window.location.reload();
-        alert(response.data.message);
-        } 
+      window.location.reload();
+      alert(response.data.message);
     });
 })
 
@@ -73,10 +71,9 @@ upload_category.addEventListener("submit", function (event) {
     headers: {"Authorization" : `Bearer ${token}`},
     data: data
   }).then(function (response) {
-    if (response.data.message == "Category added successfully") {
-        window.location.reload();
-        alert(response.data.message);
-        } 
+      window.location.reload();
+      alert(response.data.message);
+       
     });
 })
 

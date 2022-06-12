@@ -13,7 +13,7 @@ login.addEventListener("submit", function (event) {
     url: "http://127.0.0.1:8000/api/v1/user/login",
     data: data,
   }).then(function (response) {
-    if (response.data.user.role_id == 1) {
+    if (response.data.user.role.role_name == "user") {
       window.location.href = "../index.html";
     }
     localStorage.setItem("token", response.data.access_token);
