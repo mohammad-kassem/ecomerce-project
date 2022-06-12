@@ -1,4 +1,11 @@
 let token = localStorage.getItem("token");
+
+profile_logo = document.getElementById("profile-logo");
+profile_logo.addEventListener("click", function(){
+  localStorage.clear();
+  window.location.href = "./pages/login.html";
+})
+
 // display the products //
   axios({
     method: "get",
@@ -6,7 +13,7 @@ let token = localStorage.getItem("token");
     headers: {"Authorization" : `Bearer ${token}`}
   }).then(function (response) {
     let products_directory = document.getElementById("products-directory");
-    // every row contains 3 retsaurant boxes so at i=0,3,6..... we create a new row
+    // every row contains 3 products boxes so at i=0,3,6..... we create a new row
     let products = response.data.products;
     for (let i = 0; i < products.length; i++) {
       if (i % 3 === 0) {
