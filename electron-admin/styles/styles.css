@@ -24,13 +24,6 @@ img{
     height: 100%;
 }
 
-.upload-product{
-  display: block;
-}
-
-.upload-category{
-  display: none;
-}
 
 /* nav bar */
 nav {
@@ -68,20 +61,21 @@ li{
 }
 
 
-/* upload products styling */
+/* upload products and upload categories styling */
 
-.upload-product-container, .upload-category-container{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+#upload-product{
+  display: block;
+}
 
+#upload-category{
+  display: none;
 }
 
 label {
   width: 35%;
 }
 
-.upload-product-form input, .upload-category-form input, select {
+input, select {
   width: 64%;
   height: 50px;
   padding: 12px 1%;

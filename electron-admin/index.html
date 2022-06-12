@@ -2,23 +2,21 @@
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" href="./styles/styles.css">
-  <title> Admin </title>
+    <title> Admin </title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script src="./scripts/upload.js" defer></script>
 </head>
 
 <body>
-    <div class="upload-product">
         <nav>
             <div></div>
             <ul class="nav-items">
-                <li> Add Category</li>
-                <li> Add Product </li>
+                <li id="add-product"> Add Product </li>
+                <li id="add-category"> Add Category</li>
             </ul>
-            <div class="profile-logo"><img src="./assets/user_pro.png"></div>
+            <div id="profile-logo"><img src="./assets/user_pro.png"></div>
         </nav>
-
-
-        <section class="page-content">
+        <section id="upload-product" class="page-content">
             <div class="upload-product-header">
                 <h1> Upload Product </h1>
             </div>
@@ -41,17 +39,7 @@
                 </div>
             </form>
         </section>
-    </div>
-    <div class="upload-category">
-        <nav>
-            <div></div>
-            <ul class="nav-items">
-                <li> Add Category</li>
-                <li> Add Product </li>
-            </ul>
-            <div class="profile-logo"><img src="./assets/user_pro.png"></div>
-        </nav>
-        <section class="page-content">
+        <section id="upload-category" class="page-content">
             <div class="upload-category-header">
                 <h1> Upload Category </h1>
             </div>
@@ -65,8 +53,6 @@
             </form>
         </section>
     </div>
-
-
 </body>
 
 </html>
