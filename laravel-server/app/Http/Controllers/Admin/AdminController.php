@@ -37,7 +37,6 @@ class AdminController extends Controller{
         $product = Product::where('product_name', $request->name)->first();
 
         if(!$product){
-            echo('hi');
             $product = Product::create([
                 'product_name' => $request->name,
                 'price' =>  $request->price,
@@ -98,7 +97,7 @@ class AdminController extends Controller{
         $categories = Category::get();
         return response()->json([
             'status' => 'Success',
-            'category' => $categories,
+            'categories' => $categories,
         ]);
     }
 }
