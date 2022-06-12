@@ -1,6 +1,6 @@
 let token = localStorage.getItem("token");
 
-profile_logo = document.getElementById("profile-logo");
+let profile_logo = document.getElementById("profile-logo");
 profile_logo.addEventListener("click", function(){
   localStorage.clear();
   window.location.href = "./pages/login.html";
@@ -31,7 +31,7 @@ profile_logo.addEventListener("click", function(){
         </div>
     <div class="product-box-content">
       <h1> ${products[i].product_name} </h1>
-      <p class="category"> ${products[i].category_id} </p>
+      <p class="category"> ${products[i].category.category_name} </p>
       <div class="product-footer">
           <p class="price"> ${products[i].price}$ </p>
           <div id="liked${products[i].id}" class="like"><i class="fa-regular fa-heart"></i></div>
@@ -54,7 +54,7 @@ profile_logo.addEventListener("click", function(){
       for (let i = 0; i< like_buttons.length; i++){
         like_buttons[i].addEventListener('click', function(){
           product_id = like_buttons[i].id;
-          product_id = product_id[product_id.length - 1];
+          product_id = product_id.match(/\d+/)[0];
           console.log(product_id);
           data = new FormData();
           data.append('id', product_id);

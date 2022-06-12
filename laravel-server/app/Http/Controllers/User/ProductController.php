@@ -6,6 +6,8 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Category;
+
 
 use App\HTTP\Controllers\Controller;
 
@@ -33,7 +35,7 @@ class ProductController extends Controller{
         else $user_id = 0;
         $products = Product::with(['users'=>function($querry) use ($user_id){
             $querry->where('user_id',$user_id);
-        }])->get();
+        }])->with('category')->get();
         return response()->json([
             "status" => "Success",
             "products" => $products
