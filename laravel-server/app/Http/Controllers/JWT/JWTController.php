@@ -28,6 +28,7 @@ class JWTController extends Controller
 
         if($validator->fails()) {
             return response() -> json([
+                'status' => 'Failure',
                 'message' => $validator->messages()->get('*')]);
         }
 
@@ -94,8 +95,7 @@ class JWTController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => $user,
-            // 'role' => $role
+            'user' => $user
         ]);
     }
 
