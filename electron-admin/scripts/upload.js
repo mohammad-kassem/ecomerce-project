@@ -21,7 +21,6 @@ upload_product.addEventListener("submit", function (event) {
   let product_image = document.getElementById("product-image");
   let product_category = document.getElementById("product-category");
   let product_price = document.getElementById("product-price");
-  console.log(product_category.value);
   let data = new FormData();
   data.append("name", product_name.value);
   data.append("image", product_image.files[0]);
@@ -39,4 +38,25 @@ upload_product.addEventListener("submit", function (event) {
         } 
     });
 })
+
+upload_category.addEventListener("submit", function (event) {
+  event.preventDefault();
+  let data = new FormData();
+  let category_name = document.getElementById("category-name");
+  data.append("name", category_name.value);
+  axios({
+    method: "post",
+    url: "http://127.0.0.1:8000/api/v1/admin/upload_category",
+    headers: {"Authorization" : `Bearer ${token}`},
+    data: data
+  }).then(function (response) {
+    if (response.data.message == "Category added successfully") {
+        window.location.reload();
+        alert(response.data.message);
+        } 
+    });
+})
+
+
+
 
