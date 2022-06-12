@@ -14,7 +14,7 @@ use App\HTTP\Controllers\Controller;
 
 class AdminController extends Controller{
 
-    public function uploadProduct(Request $request){
+    public function addProduct(Request $request){
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:2|max:255',
@@ -32,15 +32,30 @@ class AdminController extends Controller{
         $image-> move(public_path('/images'), $imagename);
         $image_url = asset('images/' . $imagename);
 
-        $product = Product::create([
-            'product_name' => $request->name,
-            'price' =>  $request->price,
-            'category_id' =>  $request->category_id,
-            'image' => $image_url,
+    
+        $request->name = ucfirst($request->name);
+        $product = Product::where('product_name', $request->name)->first();
+
+        if(!$product){
+            echo('hi');
+            $product = Product::create([
+                'product_name' => $request->name,
+                'price' =>  $request->price,
+                'category_id' =>  $request->category_id,
+                'image' => $image_url,
+            ]);
+        }
+        else{
+            return response()->json([
+            'status' => 'Failure',
+            'message' => 'Product already exists',
+            'product' => $product,
         ]);
 
+        }
+
         return response()->json([
-            'status' => 'success',
+            'status' => 'Success',
             'message' => 'Product added successfully',
             'product' => $product,
         ]);
@@ -55,13 +70,25 @@ class AdminController extends Controller{
         if($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
-        
-        $category = Category::create([
-            'category_name' => $request->name,
-        ]);
+
+        $request->name = ucfirst($request->name);
+        $category = Category::where('category_name', $request->name)->first();
+    
+        if(!$category){
+            $category = Category::create([
+                'category_name' => $request->name,
+            ]);
+        }
+        else{  
+            return response()->json([
+                'status' => 'Failed',
+                'message' => 'Category already exists',
+                'category' => $category,
+            ]);
+        }
 
         return response()->json([
-            'status' => 'success',
+            'status' => 'Success',
             'message' => 'Category added successfully',
             'category' => $category,
         ]);

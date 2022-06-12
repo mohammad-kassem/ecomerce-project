@@ -26,8 +26,8 @@ Route::group(['prefix' => 'v1'], function(){
 
     Route::group(['prefix' => 'admin'], function(){
         Route::group(['middleware' => 'admin'], function($router) {
-            Route::post('/upload_product', [AdminController::class, 'uploadProduct']);
-            Route::post('/add_category', [AdminController::class, 'addCategory']);
+            Route::post('/upload_product', [AdminController::class, 'addProduct']);
+            Route::post('/upload_category', [AdminController::class, 'addCategory']);
         });
     });
 });
