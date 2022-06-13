@@ -19,12 +19,13 @@ signup.addEventListener("submit", function (event) {
         window.location.href = "./login.html";
         alert(response.data.message);
     } 
-
-    let fname = response.data.message["fname"] ? response.data.message["fname"] + "\n" :"";
-    let lname = response.data.message["lname"] ? response.data.message["lname"] + "\n" :"";
-    let email = response.data.message["email"] ? response.data.message["email"] + "\n" :"";
-    let password = response.data.message["password"] ? response.data.message["password"] + "\n" :"";
-    alert(fname + lname + email + password);
-    window.location.reload();
-    });
+    else{
+      let fname = response.data.message["fname"] ? response.data.message["fname"] + "\n" :"";
+      let lname = response.data.message["lname"] ? response.data.message["lname"] + "\n" :"";
+      let email = response.data.message["email"] ? response.data.message["email"] + "\n" :"";
+      let password = response.data.message["password"] ? response.data.message["password"] + "\n" :"";
+      alert(fname + lname + email + password);
+      window.location.reload();
+    }
+  });
 })
