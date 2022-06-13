@@ -48,7 +48,6 @@ upload_product.addEventListener("submit", function (event) {
   let reader = new FileReader();
   reader.readAsDataURL(product_image.files[0]);
   reader.addEventListener('loadend', function(){
-    console.log(reader.result);
     let data = new FormData();
     data.append("name", product_name.value);
     data.append("image", reader.result);
@@ -61,7 +60,6 @@ upload_product.addEventListener("submit", function (event) {
       data: data
     }).then(function (response) {
         window.location.reload();
-        alert(response.data.message);
       });
   });
 })
@@ -78,8 +76,6 @@ upload_category.addEventListener("submit", function (event) {
     data: data
   }).then(function (response) {
       window.location.reload();
-      alert(response.data.message);
-       
     });
 })
 

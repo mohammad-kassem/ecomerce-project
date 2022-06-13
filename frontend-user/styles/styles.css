@@ -107,6 +107,7 @@ nav {
 #profile-logo {
     height: 100%;
     float: right;
+    cursor: pointer;
 }
 
 
@@ -186,6 +187,10 @@ nav {
 .product-footer{
     display: flex;
     justify-content: space-between;
+}
+
+.like {
+  cursor: pointer;
 }
 
 /* footer */

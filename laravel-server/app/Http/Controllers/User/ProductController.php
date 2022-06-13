@@ -13,20 +13,7 @@ use App\HTTP\Controllers\Controller;
 
 
 class ProductController extends Controller{
-    // public function __construct(){
-    //     $this->middleware('auth:api');
-    // }
-    
     public function getAllProducts(Request $request){
-        
-        // $products = Product::get();
-        // foreach ($products as $product) {
-        //     $product = $product->users->select("product_name", "user_id")->get();
-        //     echo($product);
-        //     foreach($product as $x){
-        //         echo $x->likes->select('user_id')->get();
-        //     }
-        // }
         $token = auth('api')->check();
         if ($token){
             $user = (auth('api')->user());
@@ -37,8 +24,8 @@ class ProductController extends Controller{
             $querry->where('user_id',$user_id);
         }])->with('category')->get();
         return response()->json([
-            "status" => "Success",
-            "products" => $products
+            'status' => 'Success',
+            'products' => $products
         ], 200);
     }
 }

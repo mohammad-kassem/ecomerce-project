@@ -52,12 +52,11 @@ profile_logo.addEventListener("click", function(){
       let like_buttons = document.getElementsByClassName(`like`);
       let product_id = 0;
       for (let i = 0; i< like_buttons.length; i++){
-        like_buttons[i].addEventListener('click', function(){
+        like_buttons[i].addEventListener("click", function(){
           product_id = like_buttons[i].id;
           product_id = product_id.match(/\d+/)[0];
-          console.log(product_id);
           data = new FormData();
-          data.append('id', product_id);
+          data.append("id", product_id);
           axios({
             method: "post",
             url: "http://127.0.0.1:8000/api/v1/product/like_product",
@@ -67,9 +66,8 @@ profile_logo.addEventListener("click", function(){
             if (like_buttons[i].innerHTML == `<i class="fa-solid fa-heart"></i>`) like_buttons[i].innerHTML = `<i class="fa-regular fa-heart"></i>`;
             else  like_buttons[i].innerHTML = `<i class="fa-solid fa-heart"></i>`;
         });
-
       });
-      }
+    }
   });
 
 

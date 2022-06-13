@@ -50,7 +50,7 @@ class JWTController extends Controller
     public function login(Request $request){
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
-            'password' => 'required|string|min:6',
+            'password' => 'required|string',
         ]);
 
         if ($validator->fails()) {

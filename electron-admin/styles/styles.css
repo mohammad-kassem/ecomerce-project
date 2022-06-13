@@ -51,6 +51,7 @@ li{
 #profile-logo {
   height: 100%;
   float: right;
+  cursor: pointer;
 }
 
 .upload-product-header, .upload-category-header{
@@ -58,6 +59,7 @@ li{
   padding: 10px 0;
   width: 100%;
   border-bottom: 2px solid black;
+  cursor: pointer;
 }
 
 
