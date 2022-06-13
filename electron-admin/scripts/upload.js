@@ -44,20 +44,26 @@ upload_product.addEventListener("submit", function (event) {
   let product_image = document.getElementById("product-image");
   let product_category = document.getElementById("product-category");
   let product_price = document.getElementById("product-price");
-  let data = new FormData();
-  data.append("name", product_name.value);
-  data.append("image", product_image.files[0]);
-  data.append("category_id", product_category.value);
-  data.append("price", product_price.value);
-  axios({
-    method: "post",
-    url: "http://127.0.0.1:8000/api/v1/admin/upload_product",
-    headers: {"Authorization" : `Bearer ${token}`},
-    data: data
-  }).then(function (response) {
-      window.location.reload();
-      alert(response.data.message);
-    });
+
+  let reader = new FileReader();
+  reader.readAsDataURL(product_image.files[0]);
+  reader.addEventListener('loadend', function(){
+    console.log(reader.result);
+    let data = new FormData();
+    data.append("name", product_name.value);
+    data.append("image", reader.result);
+    data.append("category_id", product_category.value);
+    data.append("price", product_price.value);
+    axios({
+      method: "post",
+      url: "http://127.0.0.1:8000/api/v1/admin/upload_product",
+      headers: {"Authorization" : `Bearer ${token}`},
+      data: data
+    }).then(function (response) {
+        window.location.reload();
+        alert(response.data.message);
+      });
+  });
 })
 
 upload_category.addEventListener("submit", function (event) {

@@ -28,9 +28,11 @@ class AdminController extends Controller{
         }
         
         $image = $request->image;
-        $imagename= date('YmdHi').$image->getClientOriginalName();
-        $image-> move(public_path('/images'), $imagename);
-        $image_url = asset('images/' . $imagename);
+        $image = explode( ',', $image);
+        $image = base64_decode($image[1]);
+        $file = 'images/'. uniqid() . '.png';
+        $success = file_put_contents($file, $image);
+        $image_url = 'http://127.0.0.1:8000/' . $file;
 
     
         $request->name = ucfirst($request->name);
